@@ -48,5 +48,6 @@ resource "spotify_playlist" "playlist" {
     data.spotify_search_track.by_artist3.tracks[0].id,
     data.spotify_search_track.by_artist3.tracks[1].id,
     data.spotify_search_track.by_artist3.tracks[2].id,
+    slice(data.spotify_search_track.artist1.tracks[*].id, 0, 3),
   ]
 }
