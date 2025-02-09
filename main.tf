@@ -14,20 +14,30 @@ provider "spotify" {
   api_key = var.spotify_api_key
 }
 
-data "spotify_search_track" "by_artist" {
-  artist = "Dolly Parton"
+data "spotify_search_track" "by_artist1" {
+  artist = "Led Zeppelin"
   #  album = "Jolene"
   #  name  = "Early Morning Breeze"
 }
 
+data "spotify_search_track" "by_artist2" {
+  artist = "Black Sabbath"
+  #  album = "Jolene"
+  #  name  = "Early Morning Breeze"
+}
+
+
 resource "spotify_playlist" "playlist" {
-  name        = "Terraform Summer Playlist"
-  description = "This playlist was created by Terraform"
+  name        = "sjg Terraform Summer Playlist"
+  description = "created by sjg via Terraform"
   public      = true
 
   tracks = [
-    data.spotify_search_track.by_artist.tracks[0].id,
-    data.spotify_search_track.by_artist.tracks[1].id,
-    data.spotify_search_track.by_artist.tracks[2].id,
+    data.spotify_search_track.by_artist1.tracks[0].id,
+    data.spotify_search_track.by_artist1.tracks[1].id,
+    data.spotify_search_track.by_artist1.tracks[2].id,
+    data.spotify_search_track.by_artist2.tracks[0].id,
+    data.spotify_search_track.by_artist2.tracks[1].id,
+    data.spotify_search_track.by_artist2.tracks[2].id,
   ]
 }
