@@ -22,7 +22,7 @@ data "spotify_search_track" "by_artist1" {
 
 data "spotify_search_track" "by_artist2" {
   artist = "Black Sabbath"
-     album = "Led Zeppelin"
+     album = "Black Sabbath"
   #  name  = "Early Morning Breeze"
 }
 
