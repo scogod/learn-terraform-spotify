@@ -22,7 +22,13 @@ data "spotify_search_track" "by_artist1" {
 
 data "spotify_search_track" "by_artist2" {
   artist = "Black Sabbath"
-     album = "Black Sabbath"
+  #  album = "Black Sabbath"
+  #  name  = "Early Morning Breeze"
+}
+
+data "spotify_search_track" "by_artist3" {
+  artist = "Rufus Du Sol"
+  #  album = "Black Sabbath"
   #  name  = "Early Morning Breeze"
 }
 
@@ -30,7 +36,7 @@ data "spotify_search_track" "by_artist2" {
 resource "spotify_playlist" "playlist" {
   name        = "sjg Terraform Summer Playlist"
   description = "created by sjg via Terraform"
-  public      = true
+  public      = false
 
   tracks = [
     data.spotify_search_track.by_artist1.tracks[0].id,
@@ -39,5 +45,8 @@ resource "spotify_playlist" "playlist" {
     data.spotify_search_track.by_artist2.tracks[0].id,
     data.spotify_search_track.by_artist2.tracks[1].id,
     data.spotify_search_track.by_artist2.tracks[2].id,
+    data.spotify_search_track.by_artist3.tracks[0].id,
+    data.spotify_search_track.by_artist3.tracks[1].id,
+    data.spotify_search_track.by_artist3.tracks[2].id,
   ]
 }
