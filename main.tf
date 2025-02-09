@@ -38,21 +38,10 @@ resource "spotify_playlist" "playlist" {
   description = "created by sjg via Terraform"
   public      = false
 
-  tracks = [
-    data.spotify_search_track.artist1.tracks[0].id,
-    data.spotify_search_track.artist1.tracks[1].id,
-    data.spotify_search_track.artist1.tracks[2].id,
-    data.spotify_search_track.artist2.tracks[0].id,
-    data.spotify_search_track.artist2.tracks[1].id,
-    data.spotify_search_track.artist2.tracks[2].id,
-    data.spotify_search_track.artist3.tracks[0].id,
-    data.spotify_search_track.artist3.tracks[1].id,
-    data.spotify_search_track.artist3.tracks[2].id,
-  ]
-
-    # Adding tracks from each artist
   tracks = concat(
-    slice(data.spotify_search_track.artist1.tracks[*].id, 0, 3),
-    slice(data.spotify_search_track.artist2.tracks[*].id, 0, 3)
+    slice(data.spotify_search_track.artist1.tracks[*].id, 0, 5),
+    slice(data.spotify_search_track.artist2.tracks[*].id, 0, 5),
+    slice(data.spotify_search_track.artist3.tracks[*].id, 0, 5),
   )
+
 }
